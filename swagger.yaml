@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Store API
+  contact: {}
+  version: "1.0"
+servers:
+  - url: https://store-api-lnikam.herokuapp.com/api/v1
+    variables: {}
+paths:
+  /products:
+    get:
+      tags:
+        - Store
+      summary: Get all products
+      operationId: Getallproducts
+      parameters:
+        - name: featured
+          in: query
+          description: ""
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: true
+        - name: name
+          in: query
+          description: Gets products by its name.
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: table
+        - name: company
+          in: query
+          description: Gets product by company name.
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: ikea
+        - name: sort
+          in: query
+          description: Sort products according to another parameter.
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: name
+        - name: numericFilters
+          in: query
+          description: filter on a specific numerical condition (<, <=, =, > or >=).
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: price>30
+        - name: fields
+          in: query
+          description: Gets required fields of products.
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: name,price
+        - name: limit
+          in: query
+          description: Gets limited number of products. By default limit is 10.
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: 15
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+tags:
+  - name: Store
+    description: ""
